@@ -80,7 +80,8 @@ public class RecipeView extends VerticalLayout implements View {
         deleteButton.addClickListener(click -> deleteRecipe());
 
         CssLayout filtering = new CssLayout();
-        filtering.addComponents(filterTextDescription, filterTextPriority, filterTextPatient, clearFilterTextBtn, applyFiltersButton);
+        filtering.addComponents(filterTextDescription, filterTextPriority,
+                filterTextPatient, clearFilterTextBtn, applyFiltersButton);
         filtering.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
 
         rootLayout.addComponent(filtering);
@@ -98,14 +99,18 @@ public class RecipeView extends VerticalLayout implements View {
     }
 
     private void applyFiltersForRecipes() {
-        if (filterTextDescription.getValue().equals("") && filterTextPatient.getValue().equals("") && (filterTextPriority.getValue() == null || String.valueOf(filterTextPriority.getValue()).equals(""))) {
+        if (filterTextDescription.getValue().equals("")
+                && filterTextPatient.getValue().equals("")
+                && (filterTextPriority.getValue() == null || String.valueOf(filterTextPriority.getValue()).equals(""))) {
             Notification.show(SET_FILTER);
         } else {
             String filterPriorityValue = "";
             if (filterTextPriority.getValue() != null) {
                 filterPriorityValue = String.valueOf(filterTextPriority.getValue());
             }
-            updateList(filterTextDescription.getValue(), filterTextPatient.getValue(), filterPriorityValue);
+            updateList(filterTextDescription.getValue(),
+                    filterTextPatient.getValue(),
+                    filterPriorityValue);
         }
     }
 
@@ -147,7 +152,9 @@ public class RecipeView extends VerticalLayout implements View {
         }
     }
 
-    public void updateList(String descriptionFilter, String patientFilter, String priorityFilter) {
+    public void updateList(String descriptionFilter,
+                           String patientFilter,
+                           String priorityFilter) {
         List<RecipeUIModel> customers = Controller.instance().findAllRecipes();
         List<RecipeUIModel> filteredRecipes = new ArrayList<>();
 
@@ -157,7 +164,9 @@ public class RecipeView extends VerticalLayout implements View {
                 String patient = String.valueOf(recipeUIModel.getPatient().getId());
                 String priority = String.valueOf(recipeUIModel.getPriority());
 
-                if (description.contains(descriptionFilter) && patient.contains(patientFilter) && priority.contains(priorityFilter)) {
+                if (description.contains(descriptionFilter)
+                        && patient.contains(patientFilter)
+                        && priority.contains(priorityFilter)) {
                     filteredRecipes.add(recipeUIModel);
                 }
 

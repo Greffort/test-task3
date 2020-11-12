@@ -63,7 +63,8 @@ public class DoctorView extends VerticalLayout implements View {
         deleteButton.addClickListener(click -> deleteDoctor());
 
         rootLayout.addComponent(horizontalLayout);
-        bodyLayout.addComponents(addButton, editButton, statisticButton, deleteButton);
+        bodyLayout.addComponents(addButton, editButton,
+                                 statisticButton, deleteButton);
         rootLayout.addComponent(bodyLayout);
         addComponent(rootLayout);
     }
@@ -77,7 +78,8 @@ public class DoctorView extends VerticalLayout implements View {
     }
 
     private void editDoctor() {
-        Optional<DoctorUIModel> doctorUI = grid.getSelectionModel().getFirstSelectedItem();
+        Optional<DoctorUIModel> doctorUI = grid.getSelectionModel()
+                .getFirstSelectedItem();
         if (doctorUI.isPresent()) {
             EditDoctorView view = new EditDoctorView(this);
             UI.getCurrent().addWindow(view.getSubWindows(doctorUI.get()));
@@ -87,7 +89,8 @@ public class DoctorView extends VerticalLayout implements View {
     }
 
     private void deleteDoctor() {
-        Optional<DoctorUIModel> doctorUI = grid.getSelectionModel().getFirstSelectedItem();
+        Optional<DoctorUIModel> doctorUI = grid.getSelectionModel()
+                .getFirstSelectedItem();
         if (doctorUI.isPresent()) {
             if (Controller.instance().findRecipeByDoctorOrderById(doctorUI.get())) {
                 Notification.show(DOCTOR_HAS_RECIPES);

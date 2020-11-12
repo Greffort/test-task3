@@ -62,9 +62,12 @@ public class AddPatientView extends FormLayout {
     }
 
     private void addValidators() {
-        Validator validatorID = new RegexpValidator("Not valid", "^[0-9]+$", true);
+        Validator validatorID = new RegexpValidator("Not valid",
+                "^[0-9]+$",
+                true);
         id.addValueChangeListener(event -> {
-            ValidationResult result = validatorID.apply(event.getValue(), new ValueContext(id));
+            ValidationResult result = validatorID.apply(event.getValue(),
+                    new ValueContext(id));
 
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());
@@ -77,9 +80,13 @@ public class AddPatientView extends FormLayout {
             }
         });
 
-        Validator validatorPhoneNumber = new RegexpValidator("Not valid", "^((\\+7|7|8)+([0-9]){10})$", true);
+        Validator validatorPhoneNumber = new RegexpValidator(
+                "Not valid",
+                "^((\\+7|7|8)+([0-9]){10})$",
+                true);
         phoneNumber.addValueChangeListener(event -> {
-            ValidationResult result = validatorPhoneNumber.apply(event.getValue(), new ValueContext(id));
+            ValidationResult result = validatorPhoneNumber.apply(event.getValue(),
+                    new ValueContext(id));
 
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());

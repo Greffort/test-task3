@@ -32,9 +32,12 @@ public class StatisticView extends Window {
     private void getStatistic(List<DoctorUIModel> doctorUIModels) {
         if (doctorUIModels != null) {
             for (DoctorUIModel doctorUIModel : doctorUIModels) {
-                Label label1 = new Label("Doctor: " + doctorUIModel.getName() + " " + doctorUIModel.getSurname());
-                Label label2 = new Label("Specialization: " + doctorUIModel.getSpecialization());
-                Label label3 = new Label("Total recipes: " + getRecipesByDoctorID(doctorUIModel).size());
+                Label label1 = new Label("Doctor: " + doctorUIModel.getName()
+                        + " " + doctorUIModel.getSurname());
+                Label label2 = new Label("Specialization: "
+                        + doctorUIModel.getSpecialization());
+                Label label3 = new Label("Total recipes: "
+                        + getRecipesByDoctorID(doctorUIModel).size());
                 Label label4 = new Label("");
                 subContent.addComponents(label1, label2, label3, label4);
             }

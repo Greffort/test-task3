@@ -60,10 +60,12 @@ public class AddDoctorView extends FormLayout {
     }
 
     private void addValidators() {
-        Validator validatorID = new RegexpValidator("Not valid", "^[0-9]+$", true);
+        Validator validatorID = new RegexpValidator("Not valid",
+                "^[0-9]+$",
+                true);
         id.addValueChangeListener(event -> {
-            ValidationResult result = validatorID.apply(event.getValue(), new ValueContext(id));
-
+            ValidationResult result = validatorID.apply(event.getValue(),
+                    new ValueContext(id));
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());
                 id.setComponentError(error);

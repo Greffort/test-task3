@@ -9,6 +9,7 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.UserError;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import org.jetbrains.annotations.NotNull;
 
 
 public class EditPatientView extends Window {
@@ -61,7 +62,7 @@ public class EditPatientView extends Window {
     }
 
 
-    public Window getSubWindows(PatientUIModel patientUIModel) {
+    public Window getSubWindows(@NotNull PatientUIModel patientUIModel) {
         Window subWindow = new Window("Sub-window");
         subWindow.setContent(subContent);
 
@@ -77,9 +78,12 @@ public class EditPatientView extends Window {
     }
 
     private void addValidators() {
-        Validator validatorID = new RegexpValidator("Not valid", "^[0-9]+$", true);
+        Validator validatorID = new RegexpValidator("Not valid",
+                "^[0-9]+$",
+                true);
         id.addValueChangeListener(event -> {
-            ValidationResult result = validatorID.apply(event.getValue(), new ValueContext(id));
+            ValidationResult result = validatorID.apply(event.getValue(),
+                    new ValueContext(id));
 
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());
@@ -92,9 +96,12 @@ public class EditPatientView extends Window {
             }
         });
 
-        Validator validatorPhoneNumber = new RegexpValidator("Not valid", "^((\\+7|7|8)+([0-9]){10})$", true);
+        Validator validatorPhoneNumber = new RegexpValidator("Not valid",
+                "^((\\+7|7|8)+([0-9]){10})$",
+                true);
         phoneNumber.addValueChangeListener(event -> {
-            ValidationResult result = validatorPhoneNumber.apply(event.getValue(), new ValueContext(id));
+            ValidationResult result = validatorPhoneNumber.apply(event.getValue(),
+                    new ValueContext(id));
 
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());
@@ -118,7 +125,7 @@ public class EditPatientView extends Window {
         cleanForm();
     }
 
-    private void save(PatientView view) {
+    private void save(@NotNull PatientView view) {
         PatientUIModel patientUIModel = new PatientUIModel();
 
         patientUIModel.setId(Long.valueOf(id.getValue()));

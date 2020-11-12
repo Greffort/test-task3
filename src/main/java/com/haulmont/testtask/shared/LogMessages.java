@@ -83,5 +83,9 @@ public class LogMessages {
         public static final String DOCTOR_HAS_RECIPES = "The selected doctor has recipes. Removal is not possible.";
         public static final String SPECIFIED_ID_IS_BUSY = "The specified ID is busy, please enter another.";
         public static final String SET_FILTER = "Please set filters";
+        public static final String PATIENT_NOT_EXIST = "The specified Patient not exist, please enter another.";
+        public static final String DOCTOR_NOT_EXIST = "The specified Doctor not exist, please enter another.";
+
+
     }
 }

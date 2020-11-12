@@ -30,7 +30,7 @@ public class Controller implements Serializable {
     private DoctorService doctorService;
     private PatientService patientService;
     private RecipeService recipeService;
-    private static Controller DB_CONTROLLER;
+    private static Controller CONTROLLER;
 
     private Controller() {
     }
@@ -45,11 +45,11 @@ public class Controller implements Serializable {
     }
 
     public static synchronized Controller instance() {
-        if (DB_CONTROLLER == null) {
-            DB_CONTROLLER = new Controller();
+        if (CONTROLLER == null) {
+            CONTROLLER = new Controller();
             LoggerHelper.info(INITIALIZED_CONTROLLER, logFile);
         }
-        return DB_CONTROLLER;
+        return CONTROLLER;
     }
 
     public List<PatientUIModel> findAllPatients() {

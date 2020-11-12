@@ -67,7 +67,8 @@ public class PatientView extends VerticalLayout implements View {
     }
 
     private void editDoctor() {
-        Optional<PatientUIModel> patientUI = grid.getSelectionModel().getFirstSelectedItem();
+        Optional<PatientUIModel> patientUI = grid.getSelectionModel()
+                .getFirstSelectedItem();
         if (patientUI.isPresent()) {
             EditPatientView view = new EditPatientView(this);
             UI.getCurrent().addWindow(view.getSubWindows(patientUI.get()));
@@ -77,7 +78,8 @@ public class PatientView extends VerticalLayout implements View {
     }
 
     private void deleteDoctor() {
-        Optional<PatientUIModel> patientUI = grid.getSelectionModel().getFirstSelectedItem();
+        Optional<PatientUIModel> patientUI = grid.getSelectionModel()
+                .getFirstSelectedItem();
         if (patientUI.isPresent()) {
             if (Controller.instance().findRecipeByPatientOrderById(patientUI.get())) {
                 Notification.show(PATIENT_HAS_RECIPES);

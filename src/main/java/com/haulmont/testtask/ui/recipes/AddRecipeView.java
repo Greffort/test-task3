@@ -15,7 +15,7 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import java.time.LocalDate;
 
-import static com.haulmont.testtask.shared.LogMessages.Notification.SPECIFIED_ID_IS_BUSY;
+import static com.haulmont.testtask.shared.LogMessages.Notification.*;
 
 public class AddRecipeView extends FormLayout {
 
@@ -63,11 +63,14 @@ public class AddRecipeView extends FormLayout {
         createDate.setValue(LocalDate.now());
         validity.setValue(LocalDate.now().plusDays(3L));
 
-        priority.setItems(PriorityUI.NORMAL, PriorityUI.CITO, PriorityUI.STATIM);
+        priority.setItems(PriorityUI.NORMAL,
+                PriorityUI.CITO,
+                PriorityUI.STATIM);
         priority.setValue(PriorityUI.NORMAL);
         setSizeUndefined();
         HorizontalLayout buttons = new HorizontalLayout(save, cancel);
-        addComponents(id, description, patient, doctor, createDate, validity, priority, buttons);
+        addComponents(id, description, patient, doctor,
+                createDate, validity, priority, buttons);
         save.setStyleName(ValoTheme.BUTTON_PRIMARY);
         save.setClickShortcut(KeyCode.ENTER);
     }
@@ -78,9 +81,12 @@ public class AddRecipeView extends FormLayout {
     }
 
     private void addValidators() {
-        Validator validatorID = new RegexpValidator("Not valid", "^[0-9]+$", true);
+        Validator validatorID = new RegexpValidator("Not valid",
+                "^[0-9]+$",
+                true);
         id.addValueChangeListener(event -> {
-            ValidationResult result = validatorID.apply(event.getValue(), new ValueContext(id));
+            ValidationResult result = validatorID.apply(event.getValue(),
+                    new ValueContext(id));
 
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());
@@ -93,10 +99,12 @@ public class AddRecipeView extends FormLayout {
             }
         });
 
-        Validator validatorDoctorID = new RegexpValidator("Not valid", "^[0-9]+$", true);
+        Validator validatorDoctorID = new RegexpValidator("Not valid",
+                "^[0-9]+$",
+                true);
         doctor.addValueChangeListener(event -> {
-            ValidationResult result = validatorDoctorID.apply(event.getValue(), new ValueContext(id));
-
+            ValidationResult result = validatorDoctorID.apply(event.getValue(),
+                    new ValueContext(id));
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());
                 doctor.setComponentError(error);
@@ -108,10 +116,12 @@ public class AddRecipeView extends FormLayout {
             }
         });
 
-        Validator validatorPatientID = new RegexpValidator("Not valid", "^[0-9]+$", true);
+        Validator validatorPatientID = new RegexpValidator("Not valid",
+                "^[0-9]+$",
+                true);
         patient.addValueChangeListener(event -> {
-            ValidationResult result = validatorPatientID.apply(event.getValue(), new ValueContext(id));
-
+            ValidationResult result = validatorPatientID.apply(event.getValue(),
+                    new ValueContext(id));
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());
                 patient.setComponentError(error);
@@ -172,10 +182,10 @@ public class AddRecipeView extends FormLayout {
                     cleanForm();
                 }
             } else {
-                Notification.show("The specified Patient not exist, please enter another.");
+                Notification.show(PATIENT_NOT_EXIST);
             }
         } else {
-            Notification.show("The specified Doctor not exist, please enter another.");
+            Notification.show(DOCTOR_NOT_EXIST);
         }
     }
 

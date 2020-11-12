@@ -44,10 +44,20 @@ public class Recipe implements Serializable {
     }
 
     public Recipe(Patient patient, Doctor doctor) {
-        this(DEFAULT_DESCRIPTION, patient, doctor, DEFAULT_CREATE_DATE, DEFAULT_VALIDITY, DEFAULT_PRIORITY);
+        this(DEFAULT_DESCRIPTION,
+                patient,
+                doctor,
+                DEFAULT_CREATE_DATE,
+                DEFAULT_VALIDITY,
+                DEFAULT_PRIORITY);
     }
 
-    public Recipe(String description, Patient patient, Doctor doctor, LocalDate createDate, LocalDate validity, Priority priority) {
+    public Recipe(String description,
+                  Patient patient,
+                  Doctor doctor,
+                  LocalDate createDate,
+                  LocalDate validity,
+                  Priority priority) {
         this.description = description;
         this.patient = patient;
         this.doctor = doctor;

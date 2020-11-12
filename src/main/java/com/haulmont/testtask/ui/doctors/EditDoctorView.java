@@ -9,6 +9,7 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.UserError;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import org.jetbrains.annotations.NotNull;
 
 
 public class EditDoctorView extends Window {
@@ -115,7 +116,7 @@ public class EditDoctorView extends Window {
         this.close();
     }
 
-    public Window getSubWindows(DoctorUIModel doctorUIModel) {
+    public Window getSubWindows(@NotNull DoctorUIModel doctorUIModel) {
         Window subWindow = new Window("Sub-window");
         subWindow.setContent(subContent);
 

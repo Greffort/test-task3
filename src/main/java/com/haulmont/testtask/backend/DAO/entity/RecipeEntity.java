@@ -59,10 +59,20 @@ public class RecipeEntity {
     }
 
     public RecipeEntity(PatientEntity patient, DoctorEntity doctor) {
-        this(DEFAULT_DESCRIPTION, patient, doctor, DEFAULT_CREATE_DATE, DEFAULT_VALIDITY, DEFAULT_PRIORITY);
+        this(DEFAULT_DESCRIPTION,
+                patient,
+                doctor,
+                DEFAULT_CREATE_DATE,
+                DEFAULT_VALIDITY,
+                DEFAULT_PRIORITY);
     }
 
-    public RecipeEntity(String description, PatientEntity patient, DoctorEntity doctor, LocalDate createDate, LocalDate validity, Priority priority) {
+    public RecipeEntity(String description,
+                        PatientEntity patient,
+                        DoctorEntity doctor,
+                        LocalDate createDate,
+                        LocalDate validity,
+                        Priority priority) {
         this.description = description;
         this.patient = patient;
         this.doctor = doctor;
