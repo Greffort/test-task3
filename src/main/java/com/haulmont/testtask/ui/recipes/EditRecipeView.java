@@ -141,8 +141,6 @@ public class EditRecipeView extends Window {
                 checkCorrectlyTextFields();
             }
         });
-
-
     }
 
     private void checkCorrectlyTextFields() {
@@ -178,7 +176,6 @@ public class EditRecipeView extends Window {
     private PatientUIModel getPatientByID(Long id) {
         return Controller.instance().findPatientByID(id);
     }
-
 
     private void cleanForm() {
         this.isCorrectlyID = false;

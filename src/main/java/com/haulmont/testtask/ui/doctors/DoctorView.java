@@ -64,7 +64,7 @@ public class DoctorView extends VerticalLayout implements View {
 
         rootLayout.addComponent(horizontalLayout);
         bodyLayout.addComponents(addButton, editButton,
-                                 statisticButton, deleteButton);
+                statisticButton, deleteButton);
         rootLayout.addComponent(bodyLayout);
         addComponent(rootLayout);
     }

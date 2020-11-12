@@ -37,7 +37,6 @@ public class LogMessages {
     }
 
     public static final class RecipeServiceImpl {
-
         public static final String RECIPE_WAS_ADDED = "The recipe's object was added";
         public static final String RECIPE_WAS_DELETED = "The recipe's object was deleted";
         public static final String SEARCH_FOR_RECIPE_BY_ID = "Find recipe by ID: ";
@@ -54,7 +53,6 @@ public class LogMessages {
         public static final String ERROR_SEARCH_FOR_RECIPE_BY_ID = "ERROR. Error finding a recipe by ID: ";
         public static final String ERROR_ALL_RECIPES_FOUND = "ERROR. Error finding all recipe";
         public static final String ERROR_RECIPE_WAS_NOT_EDITED = "ERROR. The recipe's object wasn't changed";
-
     }
 
     public static final class Controller {
@@ -85,7 +83,5 @@ public class LogMessages {
         public static final String SET_FILTER = "Please set filters";
         public static final String PATIENT_NOT_EXIST = "The specified Patient not exist, please enter another.";
         public static final String DOCTOR_NOT_EXIST = "The specified Doctor not exist, please enter another.";
-
-
     }
 }

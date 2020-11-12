@@ -101,7 +101,8 @@ public class RecipeView extends VerticalLayout implements View {
     private void applyFiltersForRecipes() {
         if (filterTextDescription.getValue().equals("")
                 && filterTextPatient.getValue().equals("")
-                && (filterTextPriority.getValue() == null || String.valueOf(filterTextPriority.getValue()).equals(""))) {
+                && (filterTextPriority.getValue() == null
+                || String.valueOf(filterTextPriority.getValue()).equals(""))) {
             Notification.show(SET_FILTER);
         } else {
             String filterPriorityValue = "";
@@ -173,6 +174,5 @@ public class RecipeView extends VerticalLayout implements View {
             }
             grid.setItems(filteredRecipes);
         }
-
     }
 }

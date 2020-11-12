@@ -37,7 +37,7 @@ public class RecipeServiceImplementation implements RecipeService {
     @Override
     public void addRecipe(@NotNull Recipe recipe) {
         try {
-            if (recipe.getPriority()==null){
+            if (recipe.getPriority() == null) {
                 recipe.setPriority(Priority.NORMAL);
             }
             recipeRepository.saveAndFlush(Mapper.toJavaObject(recipe, RecipeEntity.class));

@@ -12,6 +12,4 @@ public interface DoctorRepository extends JpaRepository<DoctorEntity, Long> {
     void deleteById(Long id);
 
     Optional<DoctorEntity> findById(Long id);
-
 }
-
