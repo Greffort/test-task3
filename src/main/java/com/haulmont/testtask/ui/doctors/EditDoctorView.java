@@ -11,6 +11,11 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.jetbrains.annotations.NotNull;
 
+/*
+ * The class defines a sub-window for editing the Doctor object
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
 
 public class EditDoctorView extends Window {
     private VerticalLayout subContent = new VerticalLayout();

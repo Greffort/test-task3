@@ -13,6 +13,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+/*
+ * Defines a Recipe object.
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 @Data
 public class Recipe implements Serializable {
 

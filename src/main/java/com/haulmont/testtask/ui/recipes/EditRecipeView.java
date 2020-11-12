@@ -15,6 +15,11 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import java.time.LocalDate;
 
+/*
+ * The class defines a sub-window for editing the Recipe object
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
 
 public class EditRecipeView extends Window {
     private VerticalLayout subContent = new VerticalLayout();

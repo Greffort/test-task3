@@ -7,6 +7,12 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import java.util.List;
 
+/*
+ * Class defines a modal window for showing statistics
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 public class StatisticView extends Window {
     private VerticalLayout subContent;
     private Button cancel;

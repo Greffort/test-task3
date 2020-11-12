@@ -10,6 +10,12 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import javax.annotation.PostConstruct;
 
+/*
+ * The class defines the default form
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 @SpringView(name = DefaultView.VIEW_NAME)
 public class DefaultView extends VerticalLayout implements View {
     public static final String VIEW_NAME = "";
@@ -24,9 +30,14 @@ public class DefaultView extends VerticalLayout implements View {
         Label label2 = new Label("Select a page and get started");
         label2.addStyleName(ValoTheme.LABEL_H2);
 
-        layout.addComponents(label1, label2);
+        Label label3 = new Label("Powered by Plantain and Tambourine");
+        label3.addStyleName(ValoTheme.LABEL_H3);
+
+
+        layout.addComponents(label1, label2, label3);
         layout.setComponentAlignment(label1, Alignment.TOP_CENTER);
         layout.setComponentAlignment(label2, Alignment.TOP_CENTER);
+        layout.setComponentAlignment(label3, Alignment.TOP_CENTER);
         addComponent(layout);
     }
 

@@ -10,6 +10,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/*
+ * interface defines methods for providing access to database data
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
+
 @Repository
 public interface RecipeRepository extends JpaRepository<RecipeEntity, Long> {
     void deleteById(@NotNull Long id);

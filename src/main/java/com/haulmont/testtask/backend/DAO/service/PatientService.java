@@ -1,9 +1,14 @@
 package com.haulmont.testtask.backend.DAO.service;
 
-
 import com.haulmont.testtask.backend.model.Patient;
 
 import java.util.List;
+
+/*
+ * Interface PatientService
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
 
 public interface PatientService {
     void addPatient(Patient patient);

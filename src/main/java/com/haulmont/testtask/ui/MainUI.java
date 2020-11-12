@@ -16,6 +16,12 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+/*
+ * The class defines the main ui of the application
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 @Theme(ValoTheme.THEME_NAME)
 @SpringUI
 @SpringViewDisplay

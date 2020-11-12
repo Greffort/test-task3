@@ -23,6 +23,13 @@ import java.util.Optional;
 import static com.haulmont.testtask.shared.LogMessages.ERROR_PARSING_OBJECT;
 import static com.haulmont.testtask.shared.LogMessages.RecipeServiceImpl.*;
 
+/*
+ * The class implements the RecipeService interface
+ * Provides end data for the user interface.
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 @Service
 public class RecipeServiceImplementation implements RecipeService {
 

@@ -13,6 +13,12 @@ import java.util.Optional;
 import static com.haulmont.testtask.shared.LogMessages.Notification.PATIENT_HAS_RECIPES;
 import static com.haulmont.testtask.shared.LogMessages.Notification.SELECT_ITEM;
 
+/*
+ * The class defines the main page for managing patient objects
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 @SpringView(name = PatientView.VIEW_NAME)
 public class PatientView extends VerticalLayout implements View {
     public static final String VIEW_NAME = "patient";

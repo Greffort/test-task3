@@ -5,6 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.Serializable;
 
+/*
+ * Class Converts objects of different types
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 public final class Mapper implements Serializable {
 
     private static String toJson(final Object clazz) throws IOException {

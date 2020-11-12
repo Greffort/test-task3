@@ -4,6 +4,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/*
+ * Defines a Doctor object.
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 @Data
 public class Doctor implements Serializable {
 

@@ -1,11 +1,16 @@
 package com.haulmont.testtask.backend.DAO.service;
 
-
 import com.haulmont.testtask.backend.model.Doctor;
 import com.haulmont.testtask.backend.model.Patient;
 import com.haulmont.testtask.backend.model.Recipe;
 
 import java.util.List;
+
+/*
+ * Interface RecipeService
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
 
 public interface RecipeService {
     void addRecipe(Recipe recipeEntity);

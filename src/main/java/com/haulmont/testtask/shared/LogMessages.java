@@ -1,5 +1,11 @@
 package com.haulmont.testtask.shared;
 
+/*
+ * Class Contains text messages used in other classes
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 public class LogMessages {
 
     public static final String ERROR_PARSING_OBJECT = "\nERROR. Object parsing completed with an error.\n";

@@ -12,6 +12,12 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import static com.haulmont.testtask.shared.LogMessages.Notification.SPECIFIED_ID_IS_BUSY;
 
+/*
+ * Class defines the form for adding a Patient
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 public class AddDoctorView extends FormLayout {
 
     private Boolean isCorrectlyID;

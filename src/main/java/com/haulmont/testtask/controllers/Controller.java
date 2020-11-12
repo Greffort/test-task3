@@ -23,6 +23,12 @@ import java.util.List;
 import static com.haulmont.testtask.shared.LogMessages.Controller.*;
 import static com.haulmont.testtask.shared.LogMessages.ERROR_PARSING_OBJECT;
 
+/*
+ * The class contains the logic for the interaction of the graphical view with the backend layer.
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 public class Controller implements Serializable {
 
     private static final Logger logFile = Logger.getLogger("APP2");

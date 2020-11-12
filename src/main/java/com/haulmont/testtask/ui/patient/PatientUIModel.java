@@ -4,6 +4,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/*
+ * The class defines a patient object in a format suitable for UI
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 @Data
 @SuppressWarnings("serial")
 public class PatientUIModel implements Serializable {

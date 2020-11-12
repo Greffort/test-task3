@@ -4,6 +4,12 @@ import com.haulmont.testtask.backend.model.Doctor;
 
 import java.util.List;
 
+/*
+ * Interface DoctorService
+ * @version 12.11.2020
+ * Created by Aleksandr Kravchina
+ */
+
 @SuppressWarnings("serial")
 public interface DoctorService {
     void addDoctor(Doctor doctor);
