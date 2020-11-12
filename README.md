@@ -18,7 +18,7 @@ Sql scripts:
 * src/main/resources/data.sql
 
 Database:
-/database
+* /database
 
 Build and Run
 -------------
