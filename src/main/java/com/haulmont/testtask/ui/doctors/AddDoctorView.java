@@ -5,7 +5,7 @@ import com.vaadin.data.ValidationResult;
 import com.vaadin.data.Validator;
 import com.vaadin.data.ValueContext;
 import com.vaadin.data.validator.RegexpValidator;
-import com.vaadin.event.ShortcutAction.KeyCode;
+import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.UserError;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
@@ -51,12 +51,12 @@ public class AddDoctorView extends FormLayout {
         addComponents(id, name, lastName, surname, specialization, buttons);
 
         save.setStyleName(ValoTheme.BUTTON_PRIMARY);
-        save.setClickShortcut(KeyCode.ENTER);
+        save.setClickShortcut(ShortcutAction.KeyCode.ENTER);
     }
 
     private void addListenerForButtons() {
-        save.addClickListener(e -> this.save());
-        cancel.addClickListener(e -> this.cancel());
+        save.addClickListener(e -> save());
+        cancel.addClickListener(e -> cancel());
     }
 
     private void addValidators() {
@@ -96,6 +96,10 @@ public class AddDoctorView extends FormLayout {
         doctorUIModel.setSurname(this.surname.getValue());
         doctorUIModel.setSpecialization(this.specialization.getValue());
 
+        eventButton(doctorUIModel);
+    }
+
+    private void eventButton(DoctorUIModel doctorUIModel) {
         if (Controller.instance().checkIDForDoctor(doctorUIModel)) {
             Notification.show(SPECIFIED_ID_IS_BUSY);
         } else {

@@ -17,11 +17,11 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.SELECT_ITEM;
 public class DoctorView extends VerticalLayout implements View {
     public static final String VIEW_NAME = "doctor";
 
-    VerticalLayout rootLayout;
-    HorizontalLayout bodyLayout;
-    HorizontalLayout horizontalLayout;
-    private AddDoctorView form = new AddDoctorView(this);
-    Grid<DoctorUIModel> grid = new Grid<>(DoctorUIModel.class);
+    private VerticalLayout rootLayout;
+    private HorizontalLayout bodyLayout;
+    private HorizontalLayout horizontalLayout;
+    private AddDoctorView form;
+    private Grid<DoctorUIModel> grid;
 
     @PostConstruct
     void init() {
@@ -31,10 +31,12 @@ public class DoctorView extends VerticalLayout implements View {
     }
 
     private void setupLayout() {
+        form = new AddDoctorView(this);
+        grid = new Grid<>(DoctorUIModel.class);
+
         form.setVisible(false);
         rootLayout = new VerticalLayout();
         bodyLayout = new HorizontalLayout();
-
 
         horizontalLayout = new HorizontalLayout(grid, form);
         horizontalLayout.setSizeFull();

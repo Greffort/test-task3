@@ -8,16 +8,14 @@ import com.vaadin.ui.themes.ValoTheme;
 import java.util.List;
 
 public class StatisticView extends Window {
-    private VerticalLayout subContent = new VerticalLayout();
-
+    private VerticalLayout subContent;
     private Button cancel;
-
     private DoctorView view;
 
     public StatisticView(DoctorView view) {
-
+        subContent = new VerticalLayout();
         this.view = view;
-        this.cancel = new Button("Cancel");
+        cancel = new Button("Cancel");
 
         subContent.setStyleName(ValoTheme.PANEL_SCROLL_INDICATOR);
 

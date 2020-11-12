@@ -15,6 +15,7 @@ public class EditDoctorView extends Window {
     private VerticalLayout subContent = new VerticalLayout();
 
     private Boolean isCorrectlyID;
+
     private TextField id;
     private TextField name;
     private TextField lastName;
@@ -54,23 +55,8 @@ public class EditDoctorView extends Window {
     }
 
     private void addListenerForButtons() {
-        save.addClickListener(e -> save(view));
+        save.addClickListener(e -> save());
         cancel.addClickListener(e -> cancel());
-    }
-
-    public Window getSubWindows(DoctorUIModel doctorUIModel) {
-        Window subWindow = new Window("Sub-window");
-        subWindow.setContent(subContent);
-
-        id.setValue(String.valueOf(doctorUIModel.getId()));
-        id.setEnabled(false);
-        name.setValue(doctorUIModel.getName());
-        lastName.setValue(doctorUIModel.getLastName());
-        surname.setValue(doctorUIModel.getSurname());
-        specialization.setValue(doctorUIModel.getSpecialization());
-
-        subWindow.center();
-        return subWindow;
     }
 
     private void addValidators() {
@@ -100,7 +86,7 @@ public class EditDoctorView extends Window {
         cleanForm();
     }
 
-    private void save(DoctorView view) {
+    private void save() {
         DoctorUIModel doctorUIModel = new DoctorUIModel();
 
         doctorUIModel.setId(Long.valueOf(id.getValue()));
@@ -109,6 +95,10 @@ public class EditDoctorView extends Window {
         doctorUIModel.setSurname(surname.getValue());
         doctorUIModel.setSpecialization(specialization.getValue());
 
+        eventButton(doctorUIModel);
+    }
+
+    private void eventButton(DoctorUIModel doctorUIModel) {
         Controller.instance().editDoctor(doctorUIModel);
         view.updateList();
         cleanForm();
@@ -123,5 +113,20 @@ public class EditDoctorView extends Window {
         this.specialization.setValue("");
         this.view.closeSubWindows();
         this.close();
+    }
+
+    public Window getSubWindows(DoctorUIModel doctorUIModel) {
+        Window subWindow = new Window("Sub-window");
+        subWindow.setContent(subContent);
+
+        id.setValue(String.valueOf(doctorUIModel.getId()));
+        id.setEnabled(false);
+        name.setValue(doctorUIModel.getName());
+        lastName.setValue(doctorUIModel.getLastName());
+        surname.setValue(doctorUIModel.getSurname());
+        specialization.setValue(doctorUIModel.getSpecialization());
+
+        subWindow.center();
+        return subWindow;
     }
 }

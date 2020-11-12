@@ -13,7 +13,6 @@ import com.haulmont.testtask.ui.patient.PatientUIModel;
 import com.haulmont.testtask.ui.recipes.RecipeUIModel;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import java.io.IOException;
@@ -41,7 +40,7 @@ public class Controller implements Serializable {
         patientService = applicationContext.getBean(PatientService.class);
         recipeService = applicationContext.getBean(RecipeService.class);
 
-        LoggerHelper.info(doctorService.toString()+patientService.toString(), logFile);
+        LoggerHelper.info(doctorService.toString() + patientService.toString(), logFile);
         LoggerHelper.info(INITIALIZED_APPLICATION_CONTEXT, logFile);
     }
 

@@ -12,6 +12,7 @@ import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.UserError;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
@@ -78,7 +79,7 @@ public class EditRecipeView extends Window {
         cancel.addClickListener(e -> cancel());
     }
 
-    public Window getSubWindows(RecipeUIModel recipeUIModel) {
+    public Window getSubWindows(@NotNull RecipeUIModel recipeUIModel) {
         Window subWindow = new Window("Sub-window");
         subWindow.setContent(subContent);
 
@@ -184,7 +185,6 @@ public class EditRecipeView extends Window {
         this.isCorrectlyID = false;
         this.isCorrectlyDoctorID = false;
         this.isCorrectlyPatientID = false;
-        this.id.setValue("");
 
         this.id.setValue("");
         this.description.setValue("");
