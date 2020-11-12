@@ -16,7 +16,7 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.SELECT_ITEM;
 /*
  * The class defines the main page for managing patient objects
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @SpringView(name = PatientView.VIEW_NAME)

@@ -3,7 +3,7 @@ package com.haulmont.testtask.shared;
 /*
  * Class Contains text messages used in other classes
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public class LogMessages {

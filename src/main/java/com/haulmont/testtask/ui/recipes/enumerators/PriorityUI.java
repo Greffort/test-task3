@@ -5,7 +5,7 @@ import java.io.Serializable;
 /*
  * Enumerator
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @SuppressWarnings("serial")

@@ -21,7 +21,7 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.SET_FILTER;
 /*
  * The class defines the main page for managing recipe objects
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @SpringView(name = RecipeView.VIEW_NAME)

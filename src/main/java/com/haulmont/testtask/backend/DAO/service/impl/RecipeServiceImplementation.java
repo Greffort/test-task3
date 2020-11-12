@@ -27,7 +27,7 @@ import static com.haulmont.testtask.shared.LogMessages.RecipeServiceImpl.*;
  * The class implements the RecipeService interface
  * Provides end data for the user interface.
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @Service

@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
 /*
  * The class defines the default form
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @SpringView(name = DefaultView.VIEW_NAME)

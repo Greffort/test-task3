@@ -9,7 +9,7 @@ import java.util.List;
 /*
  * Interface RecipeService
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public interface RecipeService {

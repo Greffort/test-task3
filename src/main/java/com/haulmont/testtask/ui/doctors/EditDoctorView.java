@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 /*
  * The class defines a sub-window for editing the Doctor object
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public class EditDoctorView extends Window {

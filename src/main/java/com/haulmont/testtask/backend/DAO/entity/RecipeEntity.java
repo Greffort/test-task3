@@ -16,7 +16,7 @@ import java.util.Locale;
 /*
  * Class defines a database entity Recipe
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @Data

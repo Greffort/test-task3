@@ -20,7 +20,7 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.*;
 /*
  * Class defines the form for adding a Recipe
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public class AddRecipeView extends FormLayout {

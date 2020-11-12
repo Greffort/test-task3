@@ -21,7 +21,7 @@ import static com.haulmont.testtask.shared.LogMessages.PatientServiceImpl.*;
  * The class implements the PatientService interface
  * Provides end data for the user interface.
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @Service

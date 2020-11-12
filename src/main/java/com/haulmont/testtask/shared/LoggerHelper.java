@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Class Initializes a logger object that allows simultaneous use
  * multiple logger objects without code duplication
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public class LoggerHelper {

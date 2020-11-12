@@ -7,7 +7,7 @@ import java.io.Serializable;
 /*
  * Defines a Patient object.
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @Data

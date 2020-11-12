@@ -15,7 +15,7 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.SPECIFIED_ID
 /*
  * Class defines the form for adding a Patient
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public class AddPatientView extends FormLayout {

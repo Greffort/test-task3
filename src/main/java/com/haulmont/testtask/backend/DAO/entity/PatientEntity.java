@@ -9,7 +9,7 @@ import java.util.List;
 /*
  * Class defines a database entity Patient
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @Data

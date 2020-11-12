@@ -10,7 +10,7 @@ import java.util.List;
 /*
  * Class defines a modal window for showing statistics
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public class StatisticView extends Window {

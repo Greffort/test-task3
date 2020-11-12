@@ -7,7 +7,7 @@ import java.util.List;
 /*
  * Interface PatientService
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public interface PatientService {

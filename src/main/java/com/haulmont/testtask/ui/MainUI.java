@@ -19,7 +19,7 @@ import org.springframework.context.ApplicationContext;
 /*
  * The class defines the main ui of the application
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 @Theme(ValoTheme.THEME_NAME)

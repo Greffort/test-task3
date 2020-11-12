@@ -26,7 +26,7 @@ import static com.haulmont.testtask.shared.LogMessages.ERROR_PARSING_OBJECT;
 /*
  * The class contains the logic for the interaction of the graphical view with the backend layer.
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public class Controller implements Serializable {

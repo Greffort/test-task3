@@ -8,7 +8,7 @@ import java.io.Serializable;
 /*
  * Class Converts objects of different types
  * @version 12.11.2020
- * Created by Aleksandr Kravchina
+ * Created by Greffort
  */
 
 public final class Mapper implements Serializable {
