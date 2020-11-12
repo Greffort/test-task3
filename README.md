@@ -1,4 +1,4 @@
-Test Task
+Test Task 3
 =========
 
 Prerequisites
