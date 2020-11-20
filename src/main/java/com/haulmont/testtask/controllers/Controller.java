@@ -8,7 +8,7 @@ import com.haulmont.testtask.backend.model.Patient;
 import com.haulmont.testtask.backend.model.Recipe;
 import com.haulmont.testtask.shared.LoggerHelper;
 import com.haulmont.testtask.shared.Mapper;
-import com.haulmont.testtask.ui.doctors.DoctorUIModel;
+import com.haulmont.testtask.ui.doctors.DoctorModelUI;
 import com.haulmont.testtask.ui.patient.PatientUIModel;
 import com.haulmont.testtask.ui.recipes.RecipeUIModel;
 import org.apache.log4j.Logger;
@@ -33,7 +33,7 @@ public class Controller implements Serializable {
 
     private static final Logger logFile = Logger.getLogger("APP2");
 
-    private DoctorService doctorService;
+    volatile private DoctorService doctorService;
     private PatientService patientService;
     private RecipeService recipeService;
     private static Controller CONTROLLER;
@@ -48,6 +48,7 @@ public class Controller implements Serializable {
 
         LoggerHelper.info(doctorService.toString() + patientService.toString(), logFile);
         LoggerHelper.info(INITIALIZED_APPLICATION_CONTEXT, logFile);
+
     }
 
     public static synchronized Controller instance() {
@@ -55,6 +56,11 @@ public class Controller implements Serializable {
             CONTROLLER = new Controller();
             LoggerHelper.info(INITIALIZED_CONTROLLER, logFile);
         }
+        return CONTROLLER;
+    }
+
+    @NotNull
+    private Object readResolve() {
         return CONTROLLER;
     }
 
@@ -72,18 +78,18 @@ public class Controller implements Serializable {
                 }
             }
         }
-
         return patientUIModels;
     }
 
-    public List<DoctorUIModel> findAllDoctors() {
+    public List<DoctorModelUI> findAllDoctors() {
         List<Doctor> doctors = doctorService.findAll();
-        List<DoctorUIModel> doctorUIModels = new ArrayList<>();
+        List<DoctorModelUI> doctorUIModels = new ArrayList<>();
+
 
         if (doctors != null) {
             for (Doctor doctor : doctors) {
                 try {
-                    doctorUIModels.add(Mapper.toJavaObject(doctor, DoctorUIModel.class));
+                    doctorUIModels.add(Mapper.toJavaObject(doctor, DoctorModelUI.class));
                 } catch (IOException e) {
                     LoggerHelper.error(ERROR_PARSING_OBJECT + ERROR_IN_FINDING_ALL_DOCTORS, e, logFile);
                     return new ArrayList<>();
@@ -94,7 +100,7 @@ public class Controller implements Serializable {
         return doctorUIModels;
     }
 
-    public List<RecipeUIModel> findAllRecipes() {
+    public List<RecipeUIModel> findAllRecipes() throws IOException {
         List<Recipe> recipes = recipeService.findAll();
         List<RecipeUIModel> recipeUIModels = new ArrayList<>();
 
@@ -104,6 +110,10 @@ public class Controller implements Serializable {
                     recipeUIModels.add(Mapper.toJavaObject(recipe, RecipeUIModel.class));
                 } catch (IOException e) {
                     LoggerHelper.error(ERROR_PARSING_OBJECT + ERROR_IN_FINDING_ALL_RECIPES, e, logFile);
+//                    throw new ExceptionInInitializerError();
+//                    throw e;
+                    return new ArrayList<>();
+                } finally {
                     return new ArrayList<>();
                 }
             }
@@ -133,7 +143,7 @@ public class Controller implements Serializable {
         }
     }
 
-    public boolean findRecipeByDoctorOrderById(DoctorUIModel doctorUIModel) {
+    public boolean findRecipeByDoctorOrderById(DoctorModelUI doctorUIModel) {
         try {
             return recipeService.findRecipeByDoctorOrderById(Mapper.toJavaObject(doctorUIModel, Doctor.class));
         } catch (IOException e) {
@@ -142,7 +152,7 @@ public class Controller implements Serializable {
         }
     }
 
-    public List<RecipeUIModel> findRecipeByDoctorId(DoctorUIModel doctorUIModel) {
+    public List<RecipeUIModel> findRecipeByDoctorId(DoctorModelUI doctorUIModel) {
         try {
             List<Recipe> recipes = recipeService.findRecipeByDoctorId(Mapper.toJavaObject(doctorUIModel, Doctor.class));
             List<RecipeUIModel> recipeUIModels = new ArrayList<>();
@@ -166,7 +176,7 @@ public class Controller implements Serializable {
         }
     }
 
-    public void addDoctor(DoctorUIModel doctorUIModel) {
+    public void addDoctor(DoctorModelUI doctorUIModel) {
         try {
             doctorService.addDoctor(Mapper.toJavaObject(doctorUIModel, Doctor.class));
         } catch (IOException e) {
@@ -186,7 +196,7 @@ public class Controller implements Serializable {
         return patientService.findById(patientUIModel.getId()) != null;
     }
 
-    public boolean checkIDForDoctor(@NotNull DoctorUIModel doctorUIModel) {
+    public boolean checkIDForDoctor(@NotNull DoctorModelUI doctorUIModel) {
         return doctorService.findById(doctorUIModel.getId()) != null;
     }
 
@@ -199,15 +209,14 @@ public class Controller implements Serializable {
         }
     }
 
-    public DoctorUIModel findDoctorByID(@NotNull Long id) {
+    public DoctorModelUI findDoctorByID(@NotNull Long id) {
         try {
-            return Mapper.toJavaObject(doctorService.findById(id), DoctorUIModel.class);
+            return Mapper.toJavaObject(doctorService.findById(id), DoctorModelUI.class);
         } catch (IOException e) {
             LoggerHelper.error(ERROR_PARSING_OBJECT + DOCTOR_ID_SEARCH_ERROR, e, logFile);
             return null;
         }
     }
-
 
     public boolean checkIDForRecipe(@NotNull RecipeUIModel recipeUIModel) {
         return recipeService.findById(recipeUIModel.getId()) != null;
@@ -223,7 +232,7 @@ public class Controller implements Serializable {
         }
     }
 
-    public void editDoctor(@NotNull DoctorUIModel doctorUIModel) {
+    public void editDoctor(@NotNull DoctorModelUI doctorUIModel) {
         try {
             if (checkIDForDoctor(doctorUIModel)) {
                 doctorService.editDoctor(Mapper.toJavaObject(doctorUIModel, Doctor.class));

@@ -60,11 +60,11 @@ public class MainUI extends UI implements ViewDisplay {
         navigationBar.addComponent(createNavigationButton("Home",
                 DefaultView.VIEW_NAME));
         navigationBar.addComponent(createNavigationButton("Doctors",
-                DoctorView.VIEW_NAME));
+                Helper.DOCTOR_VIEW_NAME));
         navigationBar.addComponent(createNavigationButton("Patients",
-                PatientView.VIEW_NAME));
+                Helper.PATIENT_VIEW_NAME));
         navigationBar.addComponent(createNavigationButton("Recipes",
-                RecipeView.VIEW_NAME));
+                Helper.RECIPE_VIEW_NAME));
         layout.addComponent(navigationBar);
         layout.setComponentAlignment(navigationBar, Alignment.TOP_CENTER);
     }

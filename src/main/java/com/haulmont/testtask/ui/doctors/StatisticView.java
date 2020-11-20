@@ -25,7 +25,7 @@ public class StatisticView extends Window {
 
         subContent.setStyleName(ValoTheme.PANEL_SCROLL_INDICATOR);
 
-        List<DoctorUIModel> doctorUIModels = getDoctors();
+        List<DoctorModelUI> doctorUIModels = getDoctors();
         getStatistic(doctorUIModels);
 
         setSizeUndefined();
@@ -35,9 +35,9 @@ public class StatisticView extends Window {
         cancel.addClickListener(e -> cancel());
     }
 
-    private void getStatistic(List<DoctorUIModel> doctorUIModels) {
+    private void getStatistic(List<DoctorModelUI> doctorUIModels) {
         if (doctorUIModels != null) {
-            for (DoctorUIModel doctorUIModel : doctorUIModels) {
+            for (DoctorModelUI doctorUIModel : doctorUIModels) {
                 Label label1 = new Label("Doctor: " + doctorUIModel.getName()
                         + " " + doctorUIModel.getSurname());
                 Label label2 = new Label("Specialization: "
@@ -50,11 +50,11 @@ public class StatisticView extends Window {
         }
     }
 
-    private List<DoctorUIModel> getDoctors() {
+    private List<DoctorModelUI> getDoctors() {
         return Controller.instance().findAllDoctors();
     }
 
-    private List<RecipeUIModel> getRecipesByDoctorID(DoctorUIModel doctorUIModel) {
+    private List<RecipeUIModel> getRecipesByDoctorID(DoctorModelUI doctorUIModel) {
         return Controller.instance().findRecipeByDoctorId(doctorUIModel);
     }
 

@@ -15,9 +15,14 @@ import java.util.Optional;
 
 @Repository
 public interface PatientRepository extends JpaRepository<PatientEntity, Long> {
+
+    String name = "";
+
     Optional<PatientEntity> findByName(String name);
 
     void deleteById(Long id);
 
     Optional<PatientEntity> findById(Long id);
+
+
 }

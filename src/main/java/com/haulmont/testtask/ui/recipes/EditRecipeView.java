@@ -1,7 +1,7 @@
 package com.haulmont.testtask.ui.recipes;
 
 import com.haulmont.testtask.controllers.Controller;
-import com.haulmont.testtask.ui.doctors.DoctorUIModel;
+import com.haulmont.testtask.ui.doctors.DoctorModelUI;
 import com.haulmont.testtask.ui.patient.PatientUIModel;
 import com.haulmont.testtask.ui.recipes.enumerators.PriorityUI;
 import com.vaadin.data.ValidationResult;
@@ -174,7 +174,7 @@ public class EditRecipeView extends Window {
         cleanForm();
     }
 
-    private DoctorUIModel getDoctorByID(Long id) {
+    private DoctorModelUI getDoctorByID(Long id) {
         return Controller.instance().findDoctorByID(id);
     }
 

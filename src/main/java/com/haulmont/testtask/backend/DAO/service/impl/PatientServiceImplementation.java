@@ -7,6 +7,7 @@ import com.haulmont.testtask.backend.model.Patient;
 import com.haulmont.testtask.shared.LoggerHelper;
 import com.haulmont.testtask.shared.Mapper;
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ import static com.haulmont.testtask.shared.LogMessages.PatientServiceImpl.*;
  */
 
 @Service
+@Scope("pdfgdgfdgd")
 public class PatientServiceImplementation implements PatientService {
 
     private static final Logger logFile = Logger.getLogger("APP2");

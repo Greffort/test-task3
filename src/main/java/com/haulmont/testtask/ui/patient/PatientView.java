@@ -1,6 +1,7 @@
 package com.haulmont.testtask.ui.patient;
 
 import com.haulmont.testtask.controllers.Controller;
+import com.haulmont.testtask.ui.Helper;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
@@ -19,9 +20,8 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.SELECT_ITEM;
  * Created by Greffort
  */
 
-@SpringView(name = PatientView.VIEW_NAME)
+@SpringView(name = Helper.PATIENT_VIEW_NAME)
 public class PatientView extends VerticalLayout implements View {
-    public static final String VIEW_NAME = "patient";
 
     private VerticalLayout rootLayout;
     private HorizontalLayout bodyLayout;
@@ -49,13 +49,12 @@ public class PatientView extends VerticalLayout implements View {
         grid.setSizeFull();
         horizontalLayout.setExpandRatio(grid, 1);
 
-        bodyLayout.setWidth("100%");
+        bodyLayout.setWidth("80%");
         bodyLayout.setWidthUndefined();
         bodyLayout.setSpacing(false);
     }
 
     private void addBody() {
-
         Button addButton = new Button("Add");
         Button editButton = new Button("Edit");
         Button deleteButton = new Button("Delete");
@@ -63,8 +62,8 @@ public class PatientView extends VerticalLayout implements View {
         addButton.focus();
 
         addButton.addClickListener(click -> form.setVisible(true));
-        editButton.addClickListener(click -> editDoctor());
-        deleteButton.addClickListener(click -> deleteDoctor());
+        editButton.addClickListener(click -> editPatient());
+        deleteButton.addClickListener(click -> deletePatient());
 
         rootLayout.addComponent(horizontalLayout);
         bodyLayout.addComponents(addButton, editButton, deleteButton);
@@ -72,7 +71,7 @@ public class PatientView extends VerticalLayout implements View {
         addComponent(rootLayout);
     }
 
-    private void editDoctor() {
+    private void editPatient() {
         Optional<PatientUIModel> patientUI = grid.getSelectionModel()
                 .getFirstSelectedItem();
         if (patientUI.isPresent()) {
@@ -83,7 +82,7 @@ public class PatientView extends VerticalLayout implements View {
         }
     }
 
-    private void deleteDoctor() {
+    private void deletePatient() {
         Optional<PatientUIModel> patientUI = grid.getSelectionModel()
                 .getFirstSelectedItem();
         if (patientUI.isPresent()) {

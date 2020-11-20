@@ -1,88 +1,56 @@
 package com.haulmont.testtask.ui.doctors;
 
 import com.haulmont.testtask.controllers.Controller;
+import com.haulmont.testtask.ui.CustomValidator;
+import com.haulmont.testtask.ui.testAbstract.AddView;
 import com.vaadin.data.ValidationResult;
-import com.vaadin.data.Validator;
-import com.vaadin.data.ValueContext;
 import com.vaadin.data.validator.RegexpValidator;
-import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.UserError;
-import com.vaadin.ui.*;
-import com.vaadin.ui.themes.ValoTheme;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.TextField;
 
 import static com.haulmont.testtask.shared.LogMessages.Notification.SPECIFIED_ID_IS_BUSY;
 
 /*
  * Class defines the form for adding a Patient
- * @version 12.11.2020
+ * Created 12.11.2020
+ * Changed 17.11.2020
  * Created by Greffort
  */
 
-public class AddDoctorView extends FormLayout {
+public class AddDoctorView extends AddView {
 
-    private Boolean isCorrectlyID;
-
-    private TextField id;
-    private TextField name;
-    private TextField lastName;
-    private TextField surname;
     private TextField specialization;
-
-    private Button save;
-    private Button cancel;
-
+    private Boolean isCorrectlyID;
     private DoctorView view;
 
     public AddDoctorView(DoctorView view) {
+//        super();
         this.view = view;
-        setupLayout();
-        addValidators();
-        addListenerForButtons();
     }
 
-    private void setupLayout() {
-        save = new Button("Save");
-        cancel = new Button("Cancel");
+    @Override
+    public void setupCustomLayout() {
         isCorrectlyID = false;
-        save.setVisible(false);
-
-        id = new TextField("ID");
-        name = new TextField("Name");
-        lastName = new TextField("Last name");
-        surname = new TextField("Surname");
         specialization = new TextField("specialization");
-
-        setSizeUndefined();
-        HorizontalLayout buttons = new HorizontalLayout(save, cancel);
-        addComponents(id, name, lastName, surname, specialization, buttons);
-
-        save.setStyleName(ValoTheme.BUTTON_PRIMARY);
-        save.setClickShortcut(ShortcutAction.KeyCode.ENTER);
+        addComponents(specialization);
     }
 
-    private void addListenerForButtons() {
-        save.addClickListener(e -> save());
-        cancel.addClickListener(e -> cancel());
-    }
-
-    private void addValidators() {
-        Validator validatorID = new RegexpValidator("Not valid",
+    public void addValidators() {
+        ValidationResult result = CustomValidator.addValidator(id, new RegexpValidator("Not valid",
                 "^[0-9]+$",
-                true);
-        id.addValueChangeListener(event -> {
-            ValidationResult result = validatorID.apply(event.getValue(),
-                    new ValueContext(id));
-            if (result.isError()) {
-                UserError error = new UserError(result.getErrorMessage());
-                id.setComponentError(error);
-                save.setVisible(false);
-            } else {
-                id.setComponentError(null);
-                isCorrectlyID = true;
-                checkCorrectlyTextFields();
-            }
-        });
+                true));
+        if (result.isError()) {
+            UserError error = new UserError(result.getErrorMessage());
+            id.setComponentError(error);
+            save.setVisible(false);
+        } else {
+            id.setComponentError(null);
+            isCorrectlyID = true;
+            checkCorrectlyTextFields();
+        }
     }
+
 
     private void checkCorrectlyTextFields() {
         if (this.isCorrectlyID) {
@@ -90,13 +58,9 @@ public class AddDoctorView extends FormLayout {
         }
     }
 
-    private void cancel() {
-        cleanForm();
-        setVisible(false);
-    }
-
-    private void save() {
-        DoctorUIModel doctorUIModel = new DoctorUIModel();
+    @Override
+    public void save() {
+        DoctorModelUI doctorUIModel = new DoctorModelUI();
 
         doctorUIModel.setId(Long.valueOf(this.id.getValue()));
         doctorUIModel.setName(this.name.getValue());
@@ -107,23 +71,19 @@ public class AddDoctorView extends FormLayout {
         eventButton(doctorUIModel);
     }
 
-    private void eventButton(DoctorUIModel doctorUIModel) {
+    private void eventButton(DoctorModelUI doctorUIModel) {
         if (Controller.instance().checkIDForDoctor(doctorUIModel)) {
             Notification.show(SPECIFIED_ID_IS_BUSY);
         } else {
             Controller.instance().addDoctor(doctorUIModel);
             view.updateList();
-            cleanForm();
+            super.cleanDefaultForm();
         }
     }
 
-    private void cleanForm() {
+    @Override
+    public void cleanCustomForm() {
         this.isCorrectlyID = false;
-        this.id.setValue("");
-        this.name.setValue("");
-        this.lastName.setValue("");
-        this.surname.setValue("");
         this.specialization.setValue("");
-        setVisible(false);
     }
 }

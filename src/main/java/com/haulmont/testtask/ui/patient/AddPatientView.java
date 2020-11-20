@@ -20,18 +20,19 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.SPECIFIED_ID
 
 public class AddPatientView extends FormLayout {
 
-    private Boolean isCorrectlyID;
-    private Boolean isCorrectlyPhoneNumber;
 
     private TextField id;
     private TextField name;
     private TextField lastName;
     private TextField surname;
-    private TextField phoneNumber;
 
     private Button save;
     private Button cancel;
 
+    // Custom objects
+    private TextField phoneNumber;
+    private Boolean isCorrectlyID;
+    private Boolean isCorrectlyPhoneNumber;
     private PatientView view;
 
     public AddPatientView(PatientView view) {
@@ -63,8 +64,8 @@ public class AddPatientView extends FormLayout {
     }
 
     private void addListenerForButtons() {
-        save.addClickListener(e -> this.save());
-        cancel.addClickListener(e -> this.cancel());
+        save.addClickListener(e -> save());
+        cancel.addClickListener(e -> cancel());
     }
 
     private void addValidators() {
@@ -74,7 +75,6 @@ public class AddPatientView extends FormLayout {
         id.addValueChangeListener(event -> {
             ValidationResult result = validatorID.apply(event.getValue(),
                     new ValueContext(id));
-
             if (result.isError()) {
                 UserError error = new UserError(result.getErrorMessage());
                 id.setComponentError(error);

@@ -1,6 +1,6 @@
 package com.haulmont.testtask.ui.recipes;
 
-import com.haulmont.testtask.ui.doctors.DoctorUIModel;
+import com.haulmont.testtask.ui.doctors.DoctorModelUI;
 import com.haulmont.testtask.ui.patient.PatientUIModel;
 import com.haulmont.testtask.ui.recipes.enumerators.PriorityUI;
 import lombok.Data;
@@ -23,7 +23,7 @@ public class RecipeUIModel implements Serializable {
 
     private PatientUIModel patient;
 
-    private DoctorUIModel doctor;
+    private DoctorModelUI doctor;
 
     private String createDate;
 

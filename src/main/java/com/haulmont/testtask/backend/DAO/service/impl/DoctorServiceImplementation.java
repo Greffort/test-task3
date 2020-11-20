@@ -7,6 +7,7 @@ import com.haulmont.testtask.backend.model.Doctor;
 import com.haulmont.testtask.shared.LoggerHelper;
 import com.haulmont.testtask.shared.Mapper;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -32,8 +33,12 @@ public class DoctorServiceImplementation implements DoctorService {
 
     private final DoctorRepository doctorRepository;
 
-    public DoctorServiceImplementation(DoctorRepository doctorRepository) {
+    private final PatientServiceImplementation patientServiceImplementation;
+
+    @Autowired
+    public DoctorServiceImplementation(DoctorRepository doctorRepository, PatientServiceImplementation patientServiceImplementation) {
         this.doctorRepository = doctorRepository;
+        this.patientServiceImplementation = patientServiceImplementation;
     }
 
     @Override

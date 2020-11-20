@@ -1,7 +1,7 @@
 package com.haulmont.testtask.ui.recipes;
 
 import com.haulmont.testtask.controllers.Controller;
-import com.haulmont.testtask.ui.doctors.DoctorUIModel;
+import com.haulmont.testtask.ui.doctors.DoctorModelUI;
 import com.haulmont.testtask.ui.patient.PatientUIModel;
 import com.haulmont.testtask.ui.recipes.enumerators.PriorityUI;
 import com.vaadin.data.ValidationResult;
@@ -23,10 +23,9 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.*;
  * Created by Greffort
  */
 
-public class AddRecipeView extends FormLayout {
+class AddRecipeView extends FormLayout {
 
-    private Boolean isCorrectlyID;
-
+    private Boolean isCorrectlyRecipeID;
     private Boolean isCorrectlyPatientID;
     private Boolean isCorrectlyDoctorID;
 
@@ -53,7 +52,7 @@ public class AddRecipeView extends FormLayout {
     private void setupLayout() {
         save = new Button("Save");
         cancel = new Button("Cancel");
-        this.isCorrectlyID = false;
+        this.isCorrectlyRecipeID = false;
         this.isCorrectlyPatientID = false;
         this.isCorrectlyDoctorID = false;
         save.setVisible(false);
@@ -100,7 +99,7 @@ public class AddRecipeView extends FormLayout {
                 save.setVisible(false);
             } else {
                 id.setComponentError(null);
-                isCorrectlyID = true;
+                isCorrectlyRecipeID = true;
                 checkCorrectlyTextFields();
             }
         });
@@ -141,7 +140,7 @@ public class AddRecipeView extends FormLayout {
     }
 
     private void checkCorrectlyTextFields() {
-        if (isCorrectlyID && isCorrectlyDoctorID && isCorrectlyPatientID) {
+        if (isCorrectlyRecipeID && isCorrectlyDoctorID && isCorrectlyPatientID) {
             save.setVisible(true);
         }
     }
@@ -195,7 +194,7 @@ public class AddRecipeView extends FormLayout {
         }
     }
 
-    private DoctorUIModel getDoctorByID(Long id) {
+    private DoctorModelUI getDoctorByID(Long id) {
         return Controller.instance().findDoctorByID(id);
     }
 
@@ -204,7 +203,7 @@ public class AddRecipeView extends FormLayout {
     }
 
     private void cleanForm() {
-        this.isCorrectlyID = false;
+        this.isCorrectlyRecipeID = false;
         this.id.setValue("");
 
         this.id.setValue("");

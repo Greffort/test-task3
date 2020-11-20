@@ -62,10 +62,9 @@ public class EditPatientView extends Window {
     }
 
     private void addListenerForButtons() {
-        save.addClickListener(e -> save(view));
+        save.addClickListener(e -> save());
         cancel.addClickListener(e -> cancel());
     }
-
 
     public Window getSubWindows(@NotNull PatientUIModel patientUIModel) {
         Window subWindow = new Window("Sub-window");
@@ -130,7 +129,7 @@ public class EditPatientView extends Window {
         cleanForm();
     }
 
-    private void save(@NotNull PatientView view) {
+    private void save() {
         PatientUIModel patientUIModel = new PatientUIModel();
 
         patientUIModel.setId(Long.valueOf(id.getValue()));
@@ -139,6 +138,10 @@ public class EditPatientView extends Window {
         patientUIModel.setSurname(surname.getValue());
         patientUIModel.setPhoneNumber(phoneNumber.getValue());
 
+
+    }
+
+    private void eventButton(PatientUIModel patientUIModel) {
         Controller.instance().editPatient(patientUIModel);
         view.updateList();
         cleanForm();

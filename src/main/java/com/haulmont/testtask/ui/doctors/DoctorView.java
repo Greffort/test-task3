@@ -1,12 +1,11 @@
 package com.haulmont.testtask.ui.doctors;
 
 import com.haulmont.testtask.controllers.Controller;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.haulmont.testtask.ui.Helper;
+import com.haulmont.testtask.ui.testAbstract.ObjectView;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,76 +14,52 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.SELECT_ITEM;
 
 /*
  * The class defines the main page for managing doctor objects
- * @version 12.11.2020
+ * Created 12.11.2020
+ * Changed 17.11.2020
  * Created by Greffort
  */
 
-@SpringView(name = DoctorView.VIEW_NAME)
-public class DoctorView extends VerticalLayout implements View {
-    public static final String VIEW_NAME = "doctor";
+@SpringView(name = Helper.DOCTOR_VIEW_NAME)
+public class DoctorView extends ObjectView {
 
-    private VerticalLayout rootLayout;
-    private HorizontalLayout bodyLayout;
     private HorizontalLayout horizontalLayout;
+    private Grid<DoctorModelUI> grid;
+    private Button statisticButton;
     private AddDoctorView form;
-    private Grid<DoctorUIModel> grid;
 
-    @PostConstruct
-    void init() {
-        setupLayout();
-        addBody();
-        updateList();
-    }
-
-    private void setupLayout() {
+    @Override
+    public void setupCustomLayout() {
         form = new AddDoctorView(this);
-        grid = new Grid<>(DoctorUIModel.class);
-
         form.setVisible(false);
-        rootLayout = new VerticalLayout();
-        bodyLayout = new HorizontalLayout();
+
+        grid = new Grid<>(DoctorModelUI.class);
+        grid.setSizeFull();
 
         horizontalLayout = new HorizontalLayout(grid, form);
-        horizontalLayout.setSizeFull();
-        grid.setSizeFull();
         horizontalLayout.setExpandRatio(grid, 1);
+        horizontalLayout.setSizeFull();
 
-        bodyLayout.setWidth("80%");
-        bodyLayout.setWidthUndefined();
-        bodyLayout.setSpacing(true);
-        bodyLayout.setSpacing(false);
+        statisticButton = new Button("Statistic");
     }
 
-    private void addBody() {
-        Button addButton = new Button("Add");
-        Button editButton = new Button("Edit");
-        Button statisticButton = new Button("Statistic");
-        Button deleteButton = new Button("Delete");
-
-        addButton.focus();
-
-        addButton.addClickListener(click -> form.setVisible(true));
-        editButton.addClickListener(click -> editDoctor());
-        statisticButton.addClickListener(click -> getStatistic());
-        deleteButton.addClickListener(click -> deleteDoctor());
-
+    @Override
+    public void addCustomBody() {
         rootLayout.addComponent(horizontalLayout);
         bodyLayout.addComponents(addButton, editButton,
                 statisticButton, deleteButton);
-        rootLayout.addComponent(bodyLayout);
-        addComponent(rootLayout);
     }
 
-    private void getStatistic() {
-        StatisticView view = new StatisticView(this);
-        Window window = view.getSubWindows();
-        window.setSizeFull();
-        window.getScrollLeft();
-        UI.getCurrent().addWindow(window);
+    @Override
+    public void addButtonsListeners() {
+        addButton.addClickListener(click -> form.setVisible(true));
+        editButton.addClickListener(click -> editObject());
+        statisticButton.addClickListener(click -> getStatistic());
+        deleteButton.addClickListener(click -> deleteObject());
     }
 
-    private void editDoctor() {
-        Optional<DoctorUIModel> doctorUI = grid.getSelectionModel()
+    @Override
+    public void editObject() {
+        Optional<DoctorModelUI> doctorUI = grid.getSelectionModel()
                 .getFirstSelectedItem();
         if (doctorUI.isPresent()) {
             EditDoctorView view = new EditDoctorView(this);
@@ -94,8 +69,9 @@ public class DoctorView extends VerticalLayout implements View {
         }
     }
 
-    private void deleteDoctor() {
-        Optional<DoctorUIModel> doctorUI = grid.getSelectionModel()
+    @Override
+    public void deleteObject() {
+        Optional<DoctorModelUI> doctorUI = grid.getSelectionModel()
                 .getFirstSelectedItem();
         if (doctorUI.isPresent()) {
             if (Controller.instance().findRecipeByDoctorOrderById(doctorUI.get())) {
@@ -109,21 +85,18 @@ public class DoctorView extends VerticalLayout implements View {
         }
     }
 
-    public void closeSubWindows() {
-        for (Window window : UI.getCurrent().getWindows()) {
-            UI.getCurrent().removeWindow(window);
-            window.close();
-        }
+    private void getStatistic() {
+        StatisticView view = new StatisticView(this);
+        Window window = view.getSubWindows();
+        window.setSizeFull();
+        window.getScrollLeft();
+        UI.getCurrent().addWindow(window);
     }
 
     public void updateList() {
-        List<DoctorUIModel> customers = Controller.instance().findAllDoctors();
+        List<DoctorModelUI> customers = Controller.instance().findAllDoctors();
         if (customers != null) {
             grid.setItems(customers);
         }
-    }
-
-    @Override
-    public void enter(ViewChangeEvent event) {
     }
 }

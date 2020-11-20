@@ -1,6 +1,7 @@
 package com.haulmont.testtask.ui.recipes;
 
 import com.haulmont.testtask.controllers.Controller;
+import com.haulmont.testtask.ui.Helper;
 import com.haulmont.testtask.ui.recipes.enumerators.PriorityUI;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -24,9 +25,8 @@ import static com.haulmont.testtask.shared.LogMessages.Notification.SET_FILTER;
  * Created by Greffort
  */
 
-@SpringView(name = RecipeView.VIEW_NAME)
+@SpringView(name = Helper.RECIPE_VIEW_NAME)
 public class RecipeView extends VerticalLayout implements View {
-    public static final String VIEW_NAME = "recipe";
 
     VerticalLayout rootLayout;
     HorizontalLayout bodyLayout;

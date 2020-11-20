@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 @Data
 @SuppressWarnings("serial")
-public class DoctorUIModel implements Serializable {
+public class DoctorModelUI implements Serializable {
 
     private Long id;
     private String name;
